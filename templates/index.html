@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            padding-top: 40px;
+        }
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select {
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Big Title with Emoji (Outside Form) -->
+        <h1>🏠 House Price Predictor</h1>
+
+        <!-- Form Starts -->
+        <h2>House Price Prediction Form</h2>
+        <form action="/predict" method="post">
+            <label>Bedrooms:</label>
+            <input type="number" name="bedrooms" value="3" required>
+
+            <label>Bathrooms:</label>
+            <input type="number" step="0.5" name="bathrooms" value="2" required>
+
+            <label>Sqft Living:</label>
+            <input type="number" name="sqft_living" value="1800" required>
+
+            <label>Sqft Lot:</label>
+            <input type="number" name="sqft_lot" value="5000" required>
+
+            <label>Floors:</label>
+            <input type="number" step="0.5" name="floors" value="1" required>
+
+            <label>Waterfront (0 or 1):</label>
+            <input type="number" name="waterfront" value="0" required>
+
+            <label>View (0-4):</label>
+            <input type="number" name="view" value="0" required>
+
+            <label>Condition (1-5):</label>
+            <input type="number" name="condition" value="3" required>
+
+            <label>Sqft Above:</label>
+            <input type="number" name="sqft_above" value="1800" required>
+
+            <label>Sqft Basement:</label>
+            <input type="number" name="sqft_basement" value="0" required>
+
+            <label>City:</label>
+            <input type="text" name="city" value="Seattle" required>
+
+            <label>Statezip (e.g. WA 98103):</label>
+            <input type="text" name="statezip" value="WA 98103" required>
+
+            <label>Total Sqft:</label>
+            <input type="number" name="total_sqft" value="1800" required>
+
+            <label>Age:</label>
+            <input type="number" name="age" value="35" required>
+
+            <label>Was Renovated (0 or 1):</label>
+            <input type="number" name="was_renovated" value="0" required>
+
+            <label>Year Sold:</label>
+            <input type="number" name="year_sold" value="2024" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Optional: Show prediction result dynamically -->
+        {% if prediction %}
+            <div class="result">
+                Predicted Price: ${{ prediction }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
